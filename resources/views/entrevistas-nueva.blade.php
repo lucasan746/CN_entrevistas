@@ -51,35 +51,36 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="nombre_prospecto">Nombre</label>
 						<div class="col-md-5">
-							<input type="text" id="nombre_prospecto" name="nombre_prospecto" class="form-control" value="Javier" readonly required>
+							<input type="text" id="nombre_prospecto" name="nombre_prospecto" class="form-control" readonly required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="apellido_prospecto">Apellido</label>
 						<div class="col-md-5">
-							<input type="text" id="apellido_prospecto" name="apellido_prospecto" class="form-control" value="Filippis" readonly required>
+							<input type="text" id="apellido_prospecto" name="apellido_prospecto" class="form-control" readonly required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="nacimiento_prospecto">Fecha de Nacimiento</label>
 						<div class="col-md-2">
-							<input type="text" id="nacimiento_prospecto" name="nacimiento_prospecto" class="form-control" value="01/01/1980" readonly required>
+							<input type="text" id="nacimiento_prospecto" name="nacimiento_prospecto" class="form-control" readonly required>
 						</div>
 						<label class="col-md-1 control-label" for="edad_prospecto">Edad</label>
 						<div class="col-md-2">
-							<input type="text" id="edad_prospecto" name="edad_prospecto" class="form-control" value="40 a&ntilde;os" readonly required>
+							<input type="text" id="edad_prospecto" name="edad_prospecto" class="form-control" readonly required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="id_prospecto">ID Prospecto</label>
 						<div class="col-md-5">
-							<input type="text" id="id_prospecto" name="id_prospecto" class="form-control" value="0123456" readonly required>
+							<input type="text" id="id_prospecto" name="id_prospecto" class="form-control" readonly required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="ecivil_prospecto">Estado Civil</label>
 						<div class="col-md-2">
-							<select id="ecivil_prospecto" name="ecivil_prospecto" class="select-chosen" data-placeholder="Seleccionar..">
+							<select id="ecivil_prospecto" name="ecivil_prospecto" class="select-chosen" required>
+								<option value="">Seleccionar...</option> 
 								<option value="casado">Casado</option>         
 								<option value="soltero">Soltero</option>
 								<option value="otros">Otros</option>
@@ -156,7 +157,15 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="pais_prospecto">Pa&iacute;s</label>
 						<div class="col-md-2">
-							<input type="text" id="pais_prospecto" name="pais_prospecto" class="form-control" value="Argentina" placeholder="Ingresar..." required>
+							<select id="pais_prospecto" name="pais_prospecto" class="select-chosen" required>
+								<option value="argentina">Argentina</option>
+								<option value="chile">Chile</option>
+								<option value="uruguay">Uruguay</option>  
+								<option value="brasil">Brasil</option>          
+								<option value="otros">Otro</option>
+							</select>
+
+							<!--<input type="text" id="pais_prospecto" name="pais_prospecto" class="form-control" placeholder="Ingresar..." required>-->
 						</div>
 						<label class="col-md-1 control-label" for="provincia_prospecto">Provincia</label>
 						<div class="col-md-2">
@@ -189,35 +198,36 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="nombre_prospecto">Nombre</label>
 						<div class="col-md-5">
-							<input type="text" id="acomp_nombre_prospecto" name="acomp_nombre_prospecto" class="form-control" value="Javier" readonly >
+							<input type="text" id="acomp_nombre_prospecto" name="acomp_nombre_prospecto" class="form-control" readonly >
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="apellido_prospecto">Apellido</label>
 						<div class="col-md-5">
-							<input type="text" id="acomp_apellido_prospecto" name="acomp_apellido_prospecto" class="form-control" value="Filippis" readonly >
+							<input type="text" id="acomp_apellido_prospecto" name="acomp_apellido_prospecto" class="form-control" readonly >
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="nacimiento_prospecto">Fecha de Nacimiento</label>
 						<div class="col-md-2">
-							<input type="text" id="acomp_nacimiento_prospecto" name="acomp_nacimiento_prospecto" class="form-control" value="01/01/1980" readonly >
+							<input type="text" id="acomp_nacimiento_prospecto" name="acomp_nacimiento_prospecto" class="form-control" readonly >
 						</div>
 						<label class="col-md-1 control-label" for="edad_prospecto">Edad</label>
 						<div class="col-md-2">
-							<input type="text" id="acomp_edad_prospecto" name="acomp_edad_prospecto" class="form-control" value="40 a&ntilde;os" readonly >
+							<input type="text" id="acomp_edad_prospecto" name="acomp_edad_prospecto" class="form-control" readonly >
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="id_prospecto">ID Prospecto</label>
 						<div class="col-md-5">
-							<input type="text" id="acomp_id_prospecto" name="acomp_id_prospecto" class="form-control" value="0123456" readonly >
+							<input type="text" id="acomp_id_prospecto" name="acomp_id_prospecto" class="form-control" readonly >
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="acomp_ecivil_prospecto">Estado Civil</label>
 						<div class="col-md-2">
-							<select id="acomp_ecivil_prospecto" name="acomp_ecivil_prospecto" class="select-chosen" data-placeholder="Seleccionar..">
+							<select id="acomp_ecivil_prospecto" name="acomp_ecivil_prospecto" class="select-chosen" required>
+								<option value="">Seleccionar...</option>
 								<option value="casado">Casado</option>         
 								<option value="soltero">Soltero</option>
 								<option value="otros">Otros</option>
@@ -294,7 +304,12 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="pais_prospecto">Pa&iacute;s</label>
 						<div class="col-md-2">
-							<input type="text" id="acomp_pais_prospecto" name="acomp_pais_prospecto" class="form-control" value="Argentina" placeholder="Ingresar..." >
+							<select id="acomp_pais_prospecto" name="acomp_pais_prospecto" class="select-chosen" data-placeholder="Seleccionar..">
+								<option value="argentina">Argentina</option>         
+								<option value="otros">Otro</option>
+							</select>
+
+							<!-- <input type="text" id="acomp_pais_prospecto" name="acomp_pais_prospecto" class="form-control"  placeholder="Seleccionar..." > -->
 						</div>
 						<label class="col-md-1 control-label" for="provincia_prospecto">Provincia</label>
 						<div class="col-md-2">
@@ -321,7 +336,13 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="es_cliente_prospecto">Es Cliente?</label>
 						<div class="col-md-2">
-							<input type="text" id="es_cliente_prospecto" name="es_cliente_prospecto" class="form-control" value="" placeholder="Ingresar..." required>
+							<select id="es_cliente_prospecto" name="es_cliente_prospecto" class="select-chosen">
+								<option value="">Seleccionar...</option>
+								<option value="si">Si</option>         
+								<option value="no">No</option>
+							</select>
+
+							<!--<input type="text" id="es_cliente_prospecto" name="es_cliente_prospecto" class="form-control" value="" placeholder="Ingresar..." required>-->
 						</div>
 						<label class="col-md-1 control-label" for="nro_cliente_prospecto">Nº de Cliente</label>
 						<div class="col-md-2">
@@ -335,7 +356,18 @@
 						</div>
 						<label class="col-md-1 control-label" for="procedencia_prospecto">Procedencia</label>
 						<div class="col-md-2">
-							<input type="text" id="procedencia_prospecto" name="procedencia_prospecto" class="form-control" value="" placeholder="Ingresar...">
+						<select id="procedencia_prospecto" name="procedencia_prospecto" class="select-chosen">
+								<option value="">Seleccionar...</option>
+								<option value="TLMK">TLMK</option>         
+								<option value="INHOUSE">INHOUSE</option>
+								<option value="AMPLIACION">AMPLIACION</option>
+								<option value="CALLE">CALLE</option>
+								<option value="FACEBOOK">FACEBOOK</option>
+								<option value="INSTAGRAM">INSTAGRAM</option>
+								<option value="OTROS">Otros</option>
+							</select>
+						
+							<!--<input type="text" id="procedencia_prospecto" name="procedencia_prospecto" class="form-control" value="" placeholder="Ingresar...">-->
 						</div>
 					</div>
 					<div class="form-group">
