@@ -40,6 +40,14 @@ Route::get('perfil-listado', function () {
     return view('perfil-listado');
 })->name("perfil-listado")->middleware('auth');
 
+Route::get('parametros-acuerdos', function () {
+    return view('parametros-certificado');
+})->name("parametros-certificado")->middleware('auth');
+
+Route::get('voucher', function () {
+    return view('voucher');
+})->name("voucher")->middleware('auth');
+
 Route::get('perfil-editar', function () {
     return view('perfil-editar');
 })->name("perfil-editar")->middleware('auth');

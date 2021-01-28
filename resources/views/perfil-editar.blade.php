@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layouts.master')
 @section('content')
 <!-- Page content -->
 <div id="page-content">
