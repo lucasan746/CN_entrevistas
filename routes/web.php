@@ -15,35 +15,39 @@ use Illuminate\Support\Facades\Route;
 |
 */
 /** Rutas entrevistas */
-Route::get('entrevista-nueva', function () {
-    return view('entrevistas-nueva');
-})->middleware('auth');;
-Route::get('entrevistas-listado', function () {
-    return view('entrevistas-listado');
-})->middleware('auth');
+Route::get('entrevista-nueva',[EntrevistasController::class,'id_prospecto'])->name("entrevista-nueva")->middleware('auth');
+
+Route::get('entrevistas-listado',[EntrevistasController::class,'get_entrevistas'])->name("entrevistas-listado")->middleware('auth');
+
 Route::post('nueva_entrevista',[EntrevistasController::class,'nueva_entrevista'])->name("nueva_entrevista");
 
 /** Rutas prospecto */
 Route::get('prospecto-nuevo', function () {
     return view('prospecto-nuevo');
-})->middleware('auth');;
+})->name("prospecto-nuevo")->middleware('auth');
+
 Route::get('prospecto-editar', function () {
     return view('prospecto-editar');
-})->middleware('auth');;
+})->name("prospecto-editar")->middleware('auth');
+
 Route::get('prospecto-listado', function () {
     return view('prospecto-listado');
-})->middleware('auth');;
+})->name("prospecto-listado")->middleware('auth');
+
 
 /** Rutas usuarios */
 Route::get('perfil-listado', function () {
     return view('perfil-listado');
-})->middleware('auth');;
+})->name("perfil-listado")->middleware('auth');
+
 Route::get('perfil-editar', function () {
     return view('perfil-editar');
-})->middleware('auth');;
+})->name("perfil-editar")->middleware('auth');
+
 Route::get('gerencia-listado', function () {
     return view('gerencia-listado');
-})->middleware('auth');;
+})->name("gerencia-listado")->middleware('auth');
+
 Route::post('/login',[ApiController::class, 'queryApi'])->name('auth');
 
 Auth::routes();

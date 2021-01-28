@@ -109,18 +109,18 @@
                         <div id="horizontal-menu-collapse" class="collapse navbar-collapse pull-right">
                             <ul class="nav navbar-nav">
                                 <li>
-                                    <a href="/entrevistas-listado">Entrevistas</a>
+                                    <a href="{{route("entrevistas-listado")}}">Entrevistas</a>
                                 </li>
 								<li>
-                                    <a href="/prospecto-listado">Prospectos</a>
+                                    <a href="{{route("prospecto-listado")}}">Prospectos</a>
                                 </li>
                                                                                              
                                 <li class="dropdown">
                                     <a href="javascript:void(0)" class="dropdown-toggle" data-toggle="dropdown">Parametros <i class="fa fa-angle-down"></i></a>
                                     <ul class="dropdown-menu">
-                                        <li><a href="/perfil-listado">Usuarios</a></li>
+                                        <li><a href="{{route('perfil-listado')}}">Usuarios</a></li>
                                         <li class="divider"></li>
-										<li><a href="/gerencia-listado">Gerencias</a></li>
+										<li><a href="{{route("gerencia-listado")}}">Gerencias</a></li>
                                         <li class="divider"></li>
                                         <li><a href="/parametros-acuerdos">Certificado</a></li>
                                     </ul>

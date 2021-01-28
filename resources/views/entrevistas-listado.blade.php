@@ -10,7 +10,7 @@
 						<h1><strong>Entrevistas:</strong> Listado</h1>
 					</div>
 					<div class="col-md-3 text-right">
-						<a href="/entrevista-nueva" class="btn btn-primary">Nueva Entrevista</a>
+						<a href="{{route("entrevista-nueva")}}" class="btn btn-primary">Nueva Entrevista</a>
 					</div>
 				</div>
 			</div>
@@ -151,25 +151,26 @@
 						</tr>
 					</thead>
 					<tbody>
-						<tr>
-							<td>0123456</td>
-							<td>01/01/2021</td>
-							<td><a data-toggle="tooltip" data-original-title="Editar Prospecto" href="perfil-editar.php">Javier Filippis</a></td>
-							<td>11222333</td>
-							<td>Juan Lopez</td>
-							<td>San Bernardo</td>
-							<td>
-								<button type="button" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Modificar Estado"><span data-toggle="modal" data-target="#editarEstado">Cert. Enviado</span>
-								</button>
-							</td>
-							<td class="text-center">
-								<div class="btn-group">
-									<a href="javascript:void(0)" data-toggle="tooltip" title="" class="btn btn-sm btn-default" data-original-title="Enviar Certificado"><span data-toggle="modal" data-target="#enviarCertificado"><i class="fa fa-sticky-note"></i></span></a>
-									<a href="javascript:void(0)" data-toggle="tooltip" title="" class="btn btn-sm btn-default" data-original-title="Descargar Certificado"><i class="fa fa-download"></i></a>
-								</div>
-							</td>
-						</tr>
-
+							@foreach ($allEntrevistas as $item)
+							<tr>
+								<td>{{ $item->id }}</td>
+								<td>{{date("d/m/Y", strtotime($item->created_at))}}</td>
+								<td><a data-toggle="tooltip" data-original-title="Editar Prospecto" href="perfil-editar.php">{{$item->prospecto->nombre." ".$item->prospecto->apellido}}</a></td>
+								<td>{{$item->prospecto->dni}}</td>
+								<td>Juan Lopez</td>
+								<td>San Bernardo</td>
+								<td>
+									<button type="button" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Modificar Estado"><span data-toggle="modal" data-target="#editarEstado">Cert. Enviado</span>
+									</button>
+								</td>
+								<td class="text-center">
+									<div class="btn-group">
+										<a href="javascript:void(0)" data-toggle="tooltip" title="" class="btn btn-sm btn-default" data-original-title="Enviar Certificado"><span data-toggle="modal" data-target="#enviarCertificado"><i class="fa fa-sticky-note"></i></span></a>
+										<a href="javascript:void(0)" data-toggle="tooltip" title="" class="btn btn-sm btn-default" data-original-title="Descargar Certificado"><i class="fa fa-download"></i></a>
+									</div>
+								</td>
+							</tr>
+							@endforeach
 					</tbody>
 				</table>
 			</div>

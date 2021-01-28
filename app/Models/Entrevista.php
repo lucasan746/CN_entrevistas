@@ -11,4 +11,12 @@ class Entrevista extends Model
     
     public $table = "entrevistas";
     public $guarded=[];
+
+    public function acomp() {
+        return $this->hasMany(Acomp::class);
+    }
+
+    public function prospecto() {
+        return $this->hasOne(Prospecto::class,'id_prospecto','id_asociado');
+    }
 }

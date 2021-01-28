@@ -1,4 +1,4 @@
-          <h4>hola</h4>
+
                     <!-- Footer -->
                     <footer class="clearfix">
                         <div class="pull-right">

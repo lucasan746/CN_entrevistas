@@ -51,29 +51,29 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="nombre_prospecto">Nombre</label>
 						<div class="col-md-5">
-							<input type="text" id="nombre_prospecto" name="nombre_prospecto" class="form-control" value="Javier" readonly required>
+							<input type="text" id="nombre_prospecto" name="nombre_prospecto" class="form-control" value="" readonly required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="apellido_prospecto">Apellido</label>
 						<div class="col-md-5">
-							<input type="text" id="apellido_prospecto" name="apellido_prospecto" class="form-control" value="Filippis" readonly required>
+							<input type="text" id="apellido_prospecto" name="apellido_prospecto" class="form-control" value="" readonly required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="nacimiento_prospecto">Fecha de Nacimiento</label>
 						<div class="col-md-2">
-							<input type="text" id="nacimiento_prospecto" name="nacimiento_prospecto" class="form-control" value="01/01/1980" readonly required>
+							<input type="text" id="nacimiento_prospecto" name="nacimiento_prospecto" class="form-control" value="" readonly required>
 						</div>
 						<label class="col-md-1 control-label" for="edad_prospecto">Edad</label>
 						<div class="col-md-2">
-							<input type="text" id="edad_prospecto" name="edad_prospecto" class="form-control" value="40 a&ntilde;os" readonly required>
+							<input type="text" id="edad_prospecto" name="edad_prospecto" class="form-control" value="" readonly required>
 						</div>
 					</div>
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="id_prospecto">ID Prospecto</label>
 						<div class="col-md-5">
-							<input type="text" id="id_prospecto" name="id_prospecto" class="form-control" value="0123456" readonly required>
+							<input type="text" id="id_prospecto" name="id_prospecto" class="form-control" value="{{$entrevistas + 1}}" readonly required>
 						</div>
 					</div>
 					<div class="form-group">
