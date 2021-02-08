@@ -90,6 +90,7 @@ body {
     color: #394263;
     font-size: 13px;
     background-color: #222222;
+    -webkit-print-color-adjust: exact !important;
 }
 
 #page-container,
@@ -4138,8 +4139,18 @@ only screen and (min-device-pixel-ratio: 1.5) {
 
 @media print {
     #sidebar, #sidebar-alt, .content-header, .breadcrumb-top, .block-title .block-options, #page-content + footer, #to-top {display: none !important;}
+	.btn, footer {display: none !important;}
     #page-content {min-height: 0 !important; height: auto !important; padding: 0 !important;}
     #main-container {margin: 0 !important;}
     .block, .block.full {border: none !important; padding: 0 !important;}
     .block-title {margin: 0 0 20px !important;}
+	.alert-warning {background-color: #ffe4cc !important; border-color: #ffd6b2 !important; color: #e67e22 !important;}
+	.condiciones {font-size: 5px !important}
+	.form-control {background-color: #eee !important;}
+	div.saltopagina{ display:block !important; page-break-before:always !important; }
 }
+@media all {
+    div.saltopagina{
+       display: none;
+    }
+ }
