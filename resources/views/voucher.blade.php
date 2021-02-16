@@ -27,63 +27,63 @@
 						<tr>
 							<td>Nombre</td>
 							<td>
-								<input type="text" name="nombre_prospecto" id="nombre_prospecto" class="form-control" readonly value="">
+								<input type="text" name="nombre_prospecto" id="nombre_prospecto" class="form-control" readonly value="{{$entrevista->nombre}}">
 							</td>
 							<td>Apellido</td>
 							<td>
-								<input type="text" name="apellido_prospecto" id="apellido_prospecto" class="form-control" readonly value="">
+								<input type="text" name="apellido_prospecto" id="apellido_prospecto" class="form-control" readonly value="{{$entrevista->apellido}}">
 							</td>
 							<td>DNI</td>
 							<td>
-								<input type="text" name="dni_prospecto" id="dni_prospecto" class="form-control" readonly value="">
+								<input type="text" name="dni_prospecto" id="dni_prospecto" class="form-control" readonly value="{{$entrevista->dni}}">
 							</td>
 						</tr>
 						<tr>
 							<td>Es socio?</td>
 							<td>
-								<input type="text" name="es_cliente_prospecto" id="es_cliente_prospecto" class="form-control" readonly>
+								<input type="text" name="es_cliente_prospecto" id="es_cliente_prospecto" class="form-control" readonly value="{{$entrevista->es_cliente}}">
 							</td>
 							<td>N Socio</td>
 							<td>
-								<input type="text" name="nro_cliente_prospecto" id="nro_cliente_prospecto" class="form-control" readonly>
+								<input type="text" name="nro_cliente_prospecto" id="nro_cliente_prospecto" class="form-control" readonly value="<?php if($entrevista->nro_cliente != 0){ echo $entrevista->nro_cliente; } ?>">
 							</td>
 							<td>N Voucher</td>
 							<td>
-								<input type="text" name="nro_enrevista_prospecto" id="nro_entrevista_prospecto" class="form-control" readonly>
+								<input type="text" name="nro_enrevista_prospecto" id="nro_entrevista_prospecto" class="form-control" readonly value="{{$entrevista->id}}">
 							</td>
 						</tr>
 						<tr>
 							<td>Domicilio</td>
 							<td>
-								<input type="text" name="direccion_prospecto" id="direccion_prospecto" class="form-control" readonly>
+								<input type="text" name="direccion_prospecto" id="direccion_prospecto" class="form-control" readonly value="{{$entrevista->direccion}}">
 							</td>
 							<td>Provincia</td>
 							<td>
-								<input type="text" name="provincia_prospecto" id="provincia_prospecto" class="form-control" readonly>
+								<input type="text" name="provincia_prospecto" id="provincia_prospecto" class="form-control" readonly value="{{$entrevista->provincia}}">
 							</td>
 							<td>Pais</td>
 							<td>
-								<input type="text" name="pais_prospecto" id="pais_prospecto" class="form-control" readonly>
+								<input type="text" name="pais_prospecto" id="pais_prospecto" class="form-control" readonly value="{{$entrevista->pais}}">
 							</td>
 						</tr>
 						<tr>
 							<td>Celular</td>
 							<td>
-								<input type="text" name="celular_prospecto" id="celular_prospecto" class="form-control" readonly>
+								<input type="text" name="celular_prospecto" id="celular_prospecto" class="form-control" readonly value="{{$entrevista->celular}}">
 							</td>
 							<td>Telefono</td>
 							<td>
-								<input type="text" name="telefono_prospecto" id="telefono_prospecto" class="form-control" readonly>
+								<input type="text" name="telefono_prospecto" id="telefono_prospecto" class="form-control" readonly value="{{$entrevista->telefono}}">
 							</td>
 							<td>Email</td>
 							<td>
-								<input type="text" name="email_prospecto" id="email_prospecto" class="form-control" readonly>
+								<input type="text" name="email_prospecto" id="email_prospecto" class="form-control" readonly value="{{$entrevista->email}}">
 							</td>
 						</tr>
 						<tr>
 							<td>Fecha de entrega</td>
 							<td>
-								<input type="text" name="fecha_entrevista_prospecto" id="fecha_entrevista_prospecto" class="form-control" readonly>
+								<input type="text" name="fecha_entrevista_prospecto" id="fecha_entrevista_prospecto" class="form-control" readonly value="{{$entrevista->created_at}}">
 							</td>
 							<td>Suc. de entrega</td>
 							<td>

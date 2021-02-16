@@ -29,7 +29,7 @@ var FormsValidation = function() {
                     e.closest('.help-block').remove();
                 },
                 rules: {
-                    val_username: {
+                    dni_prospecto: {
                         required: true,
                         minlength: 3
                     },
@@ -73,7 +73,7 @@ var FormsValidation = function() {
                     }
                 },
                 messages: {
-                    val_username: {
+                    dni_prospecto: {
                         required: 'Please enter a username',
                         minlength: 'Your username must consist of at least 3 characters'
                     },

@@ -93,21 +93,23 @@
         <script>!window.jQuery && document.write(decodeURI('%3Cscript src="js/vendor/jquery-1.11.2.min.js"%3E%3C/script%3E'));</script>
         
         <!-- Bootstrap.js, Jquery plugins and Custom JS code -->
-		<script src="js/vendor/jquery.min.js"></script>
-        <script src="js/vendor/bootstrap.min.js"></script>
-        <script src="js/plugins.js"></script>
-        <script src="js/app.js"></script>
+		<script src="/js/vendor/jquery.min.js"></script>
+        <script src="/js/vendor/bootstrap.min.js"></script>
+        <script src="/js/plugins.js"></script>
+        <script src="/js/app.js"></script>
         <link href="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/css/select2.min.css" rel="stylesheet" />
         <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
-        <script src="js/entrevista.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.js"></script>
+        <script src="/js/entrevista.js"></script>
+        <script src="/js/gerencias.js"></script>
 
         <!-- Load and execute javascript code used only in this page -->
-        <script src="js/pages/tablesDatatables.js"></script>
+        <script src="/js/pages/tablesDatatables.js"></script>
         <script>$(function(){ TablesDatatables.init(); });</script>
-        <script src="js/pages/formsValidation.js"></script>
+        <script src="/js/pages/formsValidation.js"></script>
         <script>$(function(){ FormsValidation.init(); });</script>
 <!-- Load and execute javascript code used only in this page -->
-		<script src="js/pages/formsWizard.js"></script>
+		<script src="/js/pages/formsWizard.js"></script>
 		<script>$(function(){ FormsWizard.init(); });</script>
     </body>
 </html>

@@ -65,7 +65,6 @@
                         </div>
                     </div>
 					<fieldset>
-						<legend><i class="fa fa-angle-right"></i> Cambio de contrase&ntilde;a</legend>
 						<div class="form-group">
                         	<label class="col-md-4 control-label" for="email">Contrase&ntilde;a</label>
 							<div class="col-md-6">

@@ -6,7 +6,7 @@
         <div class="header-section">
 				<div class="row">
 					<div class="col-md-9">
-						<h1><strong>Usuario:</strong> Editar</h1>
+						<h1><strong>Usuario:</strong> Nuevo</h1>
 					</div>
 					<div class="col-md-3 text-right">
 						<a href="/perfil-listado" class="btn btn-primary">Volver al Listado</a>
@@ -43,7 +43,7 @@
 					<div class="form-group">
                         <label class="col-md-4 control-label" for="usuario">Nombre de Usuario</label>
                         <div class="col-md-6">
-                            <input type="number" name="inputs[dni]" class="form-control" value="dni" placeholder="" required min="100000" max="99999999">
+                            <input type="text" name="username" class="form-control" value="" placeholder="">
                         </div>
                     </div>
 					

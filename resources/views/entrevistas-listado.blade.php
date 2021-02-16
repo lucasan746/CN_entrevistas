@@ -1,5 +1,6 @@
 @extends('layouts.master')
 @section('content')
+
 	<!-- Page content -->
 	<div id="page-content">
 		<!-- Inicio Header // Boton a nueva entrevista -->
@@ -30,7 +31,7 @@
 			<div class="block-content">
 				<p>Personalice su b&uacute;squeda filtrando por los parametros a continuaci&oacute;n:</p>
 
-				<form action="page_forms_general.html" method="post" class="form-horizontal form-bordered" onsubmit="return false;">
+				<form action="{{route("busqueda-entrevistas")}}" method="get" class="form-horizontal form-bordered">
 					<div class="form-group">
 						<div class="col-md-1 text-right">
 							<label class="control-label" for="dni_cliente">DNI:</label>
@@ -96,11 +97,11 @@
 						<div class="col-md-2">
 							<select id="select_estado" name="select_estado" class="select-chosen" data-placeholder="Seleccionar..">
 								<option></option><!-- Required for data-placeholder attribute to work with Chosen plugin -->         
-								<option value="Borrador">Borrador</option>
-								<option value="Certificado Enviado">Certificado Enviado</option>
-								<option value="Certificado Vencido">Certificado Vencido</option>
-								<option value="Certificado Utilizado">Certificado Utilizado</option>
-								<option value="Eliminada">Eliminada</option>
+								<option value="1">Borrador</option>
+								<option value="2">Certificado Enviado</option>
+								<option value="3">Certificado Vencido</option>
+								<option value="4">Certificado Utilizado</option>
+								<option value="5">Eliminada</option>
 								<option value="Todos">Todos</option>
 							</select>
 						</div>
@@ -134,7 +135,7 @@
 		<!-- Inicio: Tabla -->
 		<div class="block full">
 			<!-- Sumar condicional con siguiente mensaje en caso de no haber registros -->
-            <p class="alert alert-danger"> <i class="fa fa-exclamation-circle"></i> No existen registros en base a los filtros definidos. Por favor, realice una nueva busqueda o limpie los parametros cargados previamente.</p>
+            <p class="alert alert-danger" style="display: none;"> <i class="fa fa-exclamation-circle"></i> No existen registros en base a los filtros definidos. Por favor, realice una nueva busqueda o limpie los parametros cargados previamente.</p>
 			
 			<div class="table-responsive">
 				<table id="listado-entrevistas" class="table table-vcenter table-condensed table-bordered table-hover">
@@ -152,21 +153,21 @@
 					</thead>
 					<tbody>
 							@foreach ($allEntrevistas as $item)
-							<tr>
+							<tr id="entrevista-nro{{$item->id}}">
 								<td>{{ $item->id }}</td>
 								<td>{{date("d/m/Y", strtotime($item->created_at))}}</td>
-								<td><a data-toggle="tooltip" data-original-title="Editar Prospecto" href="perfil-editar.php">{{$item->prospecto->nombre." ".$item->prospecto->apellido}}</a></td>
-								<td>{{$item->prospecto->dni}}</td>
-								<td>Juan Lopez</td>
-								<td>San Bernardo</td>
+								<td><a data-toggle="tooltip" data-original-title="Editar Prospecto" href="perfil-editar.php">{{$item->nombre." ".$item->apellido}}</a></td>
+								<td>{{$item->dni}}</td>
+								<td>{{$item->user_nombre." ".$item->user_apellido}}</td>
+								<td>{{$item->user_gerencia}}</td>
 								<td>
-									<button type="button" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Modificar Estado"><span data-toggle="modal" data-target="#editarEstado">Cert. Enviado</span>
+									<button type="button" class="btn btn-xs btn-primary" data-toggle="tooltip" data-placement="top" title="Modificar Estado"><span data-toggle="modal" data-id="{{ $item->id }}" data-target="#editarEstado">{{ $item->estado }}</span>
 									</button>
 								</td>
 								<td class="text-center">
 									<div class="btn-group">
-										<a href="javascript:void(0)" data-toggle="tooltip" title="" class="btn btn-sm btn-default" data-original-title="Enviar Certificado"><span data-toggle="modal" data-target="#enviarCertificado"><i class="fa fa-sticky-note"></i></span></a>
-										<a href="javascript:void(0)" data-toggle="tooltip" title="" class="btn btn-sm btn-default" data-original-title="Descargar Certificado"><i class="fa fa-download"></i></a>
+										<a href="javascript:void(0)"  data-pdf="{{$item->pdf}}" data-id="{{$item->id}}" data-email="{{$item->email}}" data-emailalt="{{$item->email_alt}}" data-toggle="tooltip" title="" class="enviar-cert btn btn-sm btn-default" data-original-title="Enviar Certificado"><span data-toggle="modal" data-target="#enviarCertificado"><i class="fa fa-sticky-note"></i></span></a>
+										<a href="<?php echo "download-pdf/".$item->pdf ?>" data-toggle="tooltip" title="" class="btn btn-sm btn-default" data-original-title="Descargar Certificado"><i class="fa fa-download" target="_blank"></i></a>
 									</div>
 								</td>
 							</tr>
@@ -188,18 +189,18 @@
 			<h4 class="modal-title" id="estado_entrevista">Cambiar Estado de Entrevista</h4>
 			</div>
 			<div class="modal-body">
-				<p class="alert alert-success"> <i class="fa fa-exclamation-circle"></i> El cambio de Estado se ha realizado con Exito!</p>
-				<form action="#" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered" onsubmit="return false;">
+				<p class="alert alert-success" id="estado-cambiado" style="display: none;"> <i class="fa fa-exclamation-circle"></i> El cambio de Estado se ha realizado con Exito!</p>
+				<form action="#" id="estado-entrevista" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered" onsubmit="return false;">
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="nombre_gerencia">Estado:</label>
 						<div class="col-md-9">
-							<select id="select_estado" name="select_estado" class="select-chosen">
-								        
-								<option disabled value="Borrador">Borrador</option>
-								<option value="Certificado Enviado">Certificado Enviado</option>
-								<option value="Certificado Vencido">Certificado Vencido</option>
-								<option value="Certificado Utilizado">Certificado Utilizado</option>
-								<option value="Eliminada">Eliminada</option>
+							<input type="hidden" id="input-estado" value="">
+							<select id="select_estado" name="select_estado" class="select-chosen">       
+								<option disabled value="1">Borrador</option>
+								<option value="2">Certificado Enviado</option>
+								<option value="3">Certificado Vencido</option>
+								<option value="4">Certificado Utilizado</option>
+								<option value="5">Eliminada</option>
 							</select>
 						</div>
 					</div>
@@ -224,14 +225,16 @@
 			<h4 class="modal-title" id="estado_entrevista">Enviar Certificado</h4>
 			</div>
 			<div class="modal-body">
-				<p class="alert alert-success"> <i class="fa fa-exclamation-circle"></i> El certificado se envio con exito!</p>
-				<form action="#" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered" onsubmit="return false;">
+				<p class="alert alert-success" id="email-reenviado" style="display: none;"> <i class="fa fa-exclamation-circle"></i> El certificado se envio con exito!</p>
+				<form action="#" method="post" id="form-certificado-email" enctype="multipart/form-data" class="form-horizontal form-bordered" onsubmit="return false;">
 					<div class="form-group">
 						<label class="col-md-3 control-label" for="nombre_gerencia">Enviar a:</label>
 						<div class="col-md-9">
-							<select id="select_estado" name="select_estado" class="select-chosen" data-placeholder="Seleccionar..">
-								<option></option><!-- Required for data-placeholder attribute to work with Chosen plugin -->         
-								<option value="vjfilippis@gmail.com">vjfilippis@gmail.com</option>
+							<input type="hidden" id="email-id" value="">
+							<input type="hidden" id="input-pdf" value="">
+							<select id="select_email" name="select_email" class="select-chosen" data-placeholder="Seleccionar..">
+								<option></option><!-- Required for data-placeholder attribute to work with Chosen plugin -->       
+								<option id="testest" value="lucas.sanchezariel@gmail.com">lucas.sanchezariel@gmail.com</option>
 								<option value="vjfilippis@gmail.com">vjfilippis@hotmail.com</option>
 							</select>
 						</div>

@@ -73,7 +73,7 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="id_prospecto">ID Prospecto</label>
 						<div class="col-md-5">
-							<input type="text" id="id_prospecto" name="id_prospecto" class="form-control" value="{{$entrevistas + 1}}" readonly required>
+							<input type="text" id="id_prospecto" name="id_prospecto" class="form-control" value="<?php if($idUltimoProspecto){ echo $idUltimoProspecto->id_prospecto + 1;}else{ echo 1;} ?>" readonly required>
 						</div>
 					</div>
 					<div class="form-group">
@@ -220,7 +220,7 @@
 					<div class="form-group">
 						<label class="col-md-4 control-label" for="id_prospecto">ID Prospecto</label>
 						<div class="col-md-5">
-							<input type="text" id="acomp_id_prospecto" name="acomp_id_prospecto" class="form-control" readonly >
+							<input type="text" id="acomp_id_prospecto" name="acomp_id_prospecto" class="form-control" readonly value="<?php if($idUltimoProspecto){ echo $idUltimoProspecto->id_prospecto + 2;}else{ echo 2;} ?>">
 						</div>
 					</div>
 					<div class="form-group">

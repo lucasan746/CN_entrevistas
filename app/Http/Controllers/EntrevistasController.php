@@ -6,12 +6,16 @@ use Illuminate\Http\Request;
 use App\Models\Entrevista as ModelsEntrevista;
 use App\Models\Acomp as ModelsAcomp;
 use App\Models\Prospecto as ModelsProspecto;
+use Exception;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class EntrevistasController extends Controller
 {
     public function nueva_entrevista(request $form){
 
-        $prospecto = new ModelsProspecto();
+        try {
+            $prospecto = new ModelsProspecto();
         $prospecto->dni = intval($form->dni_prospecto);
         $prospecto->nombre = $form->nombre_prospecto;
         $prospecto->apellido = $form->apellido_prospecto;
@@ -42,7 +46,11 @@ class EntrevistasController extends Controller
         $entrevista->opc = $form->opc_prospecto;
         $entrevista->liner = $form->liner_prospecto;
         $entrevista->fecha = $form->fecha_prospecto;
+        $entrevista->id_user = Auth::id();
         $entrevista->comentarios = $form->comentarios_prospecto;
+        $permitted_chars = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $nombrePdfProspecto = substr(str_shuffle($permitted_chars), 0, 16).'.pdf';
+        $entrevista->pdf = $nombrePdfProspecto;
         $entrevista->save();
 
         if($form->acomp_dni_prospecto != null){
@@ -69,19 +77,48 @@ class EntrevistasController extends Controller
             $acomp->acomp_provincia = $form->acomp_provincia_prospecto;
             $acomp->save();
         }
-
-        return redirect('/entrevistas-listado');       
+        } catch (Exception $err) {
+            echo 'Hubo un error al guardar la entrevista';
+        } finally {
+            return redirect("imprimir-prospecto/{$nombrePdfProspecto}/{$entrevista->id}");
+        }      
     }
 
     public function get_entrevistas() {
-        $allEntrevistas = ModelsEntrevista::all();
+        $allEntrevistas = DB::table("entrevistas")->join("prospecto","id_asociado","=","id_prospecto")->join("users","id_user","=","users.id")->get();
+        $vac = compact('allEntrevistas');
+        return view('entrevistas-listado',$vac);
+    }
+
+    public function busqueda_entrevistas(request $request) {
+        if($request->get('dni_prospecto')){
+            $dni = $request->get('dni_prospecto');
+        }
+        if($request->get('prospecto')){
+            $prospecto = $request->get('prospecto');
+        }
+        if($request->get('dni_prospecto')){
+            $desde = $request->get('dni_prospecto');
+        }
+        if($request->get('fecha_desde')){
+            $hasta = $request->get('fecha_hasta');
+        }
+
+        $allEntrevistas = DB::table("entrevistas")->join("prospecto","id_asociado","=","id_prospecto")->join("users","id_user","=","id")
+        ->where("dni","LIKE",$dni)->get();
         $vac = compact('allEntrevistas');
         return view('entrevistas-listado',$vac);
     }
 
     public function id_prospecto() {
-        $entrevistas = ModelsEntrevista::all()->count();
-        $vac = compact('entrevistas');
+        $idUltimoProspecto = DB::table("prospecto")->orderByDesc("created_at")->first();
+        $vac = compact('idUltimoProspecto');
         return view('entrevistas-nueva',$vac);
+    }
+
+    public function cambiarEstadoEntrevista(request $form){
+        $entrevista = ModelsEntrevista::find($form->id);
+        $entrevista->estado = $form->estado;
+        $entrevista->save(); 
     }
 }

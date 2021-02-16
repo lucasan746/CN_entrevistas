@@ -26,36 +26,23 @@
 					</tr>
 				</thead>
 				<tbody>
+					@foreach ($gerencias as $gerencia)					
 					<tr class='js-contenedor-registro' data-id_registro='id_gerencia' id='id_gerencia'>
-						<td class='js-nombre-registro'>Sede Central</td>
+						<td class='js-nombre-registro'>{{$gerencia->gerencia}}</td>
 						<td>
 							<label class="switch switch-success">
-								<input type="checkbox" class='js-toggle-activo' checked>
+								<input type="checkbox" data-id="{{$gerencia->id}}" class='js-toggle-activo' <?php if($gerencia->estado == true){ echo "checked";} ?>>
 								<span></span>
 							</label>
 						</td>
 						<td class="text-right">
 							<div class="btn-group">
-								<a href="#" data-toggle="modal" data-target="#editarGerencia" title="editar" class="btn btn-xs btn-default"><i class="fa fa-cog"></i></a>
-								<a href="javascript:void(0)" data-toggle="tooltip" title="eliminar" class="btn btn-xs btn-danger js-eliminar-registro"><i class="fa fa-times"></i></a>
+								<a href="#" data-gerencia="{{$gerencia->gerencia}}" data-id="{{$gerencia->id}}" data-toggle="modal" data-target="#editarGerencia" title="editar" class="btn btn-xs btn-default"><i class="fa fa-cog"></i></a>
+								<a href="<?php echo "eliminar-gerencia/".$gerencia->id; ?>" data-toggle="tooltip" title="eliminar" class="btn btn-xs btn-danger js-eliminar-registro"><i class="fa fa-times"></i></a>
 							</div>
 						</td>
 					</tr>
-					<tr class='js-contenedor-registro' data-id_registro='id_gerencia' id='id_gerencia'>
-						<td class='js-nombre-registro'>Bariloche</td>
-						<td>
-							<label class="switch switch-success">
-								<input type="checkbox" class='js-toggle-activo' checked>
-								<span></span>
-							</label>
-						</td>
-						<td class="text-right">
-							<div class="btn-group">
-								<a href="#" data-toggle="modal" data-target="#editarGerencia" title="editar" class="btn btn-xs btn-default"><i class="fa fa-cog"></i></a>
-								<a href="javascript:void(0)" data-toggle="tooltip" title="eliminar" class="btn btn-xs btn-danger js-eliminar-registro"><i class="fa fa-times"></i></a>
-							</div>
-						</td>
-					</tr>
+					@endforeach
 				</tbody>
 				<tfoot>
 					<tr>
@@ -88,7 +75,8 @@
 			<h4 class="modal-title" id="myModalLabel">Nueva Gerencia</h4>
 			</div>
 			<div class="modal-body">
-					<form action="#" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered" onsubmit="return false;">
+					<form action="{{route("nueva-gerencia")}}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
+						@csrf
 						<div class="form-group">
 							<label class="col-md-3 control-label" for="nombre_gerencia">Nombre Gerencia:</label>
 							<div class="col-md-9">
@@ -116,11 +104,13 @@
 			<h4 class="modal-title" id="myModalLabel">Edici&oacute;n de Gerencia</h4>
 			</div>
 			<div class="modal-body">
-					<form action="#" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered" onsubmit="return false;">
+					<form action="{{route("edit-gerencia")}}" method="post" enctype="multipart/form-data" class="form-horizontal form-bordered">
+						@csrf
 						<div class="form-group">
 							<label class="col-md-3 control-label" for="nombre_gerencia">Nombre Gerencia:</label>
 							<div class="col-md-9">
-								<input type="text" id="nombre_gerencia" name="nombre_gerencia" class="form-control" placeholder="" value="Sede Central" required>
+								<input type="text" id="nombre_gerencia_edit" name="nombre_gerencia" class="form-control" placeholder="" value="Sede Central" required>
+								<input type="hidden" id="id_gerencia_edit" name="id_gerencia">
 							</div>
 						</div>
 						<div class="form-group form-actions">

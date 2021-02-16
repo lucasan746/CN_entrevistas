@@ -14,14 +14,14 @@ class CreateProspectoTable extends Migration
     public function up()
     {
         Schema::create('prospecto', function (Blueprint $table) {
-            $table->id();
+            Schema::enableForeignKeyConstraints();
+            $table->unsignedBigInteger("id_prospecto")->unique();
             $table->timestamps();
             $table->bigInteger("dni");
             $table->string("nombre");
             $table->string("apellido");
             $table->string("fecha_nacimiento");
             $table->integer("edad");
-            $table->integer("id_prospecto");
             $table->string("estado_civil");
             $table->string("profesion");
             $table->bigInteger("celular");

@@ -19,4 +19,8 @@ class Entrevista extends Model
     public function prospecto() {
         return $this->hasOne(Prospecto::class,'id_prospecto','id_asociado');
     }
+
+    public function user() {
+        return $this->hasOne(User::class,'id','id_user');
+    }
 }

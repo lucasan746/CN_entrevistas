@@ -11,7 +11,7 @@
             <div class="row">
                 <!-- Main Title (hidden on small devices for the statistics to fit) -->
                 <div class="col-md-4 col-lg-6 hidden-xs hidden-sm">
-                    <h1>Bienvenido <strong>Admin</strong><br></h1>
+                    <h1>Bienvenido <strong>{{Auth::user()->name}}</</strong><br></h1>
                 </div>
                 <!-- END Main Title -->
             </div>
